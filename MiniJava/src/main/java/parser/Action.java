@@ -14,8 +14,10 @@ public class Action {
     public String toString() {
         return actionState.GetString(number);
     }
+
+    public act getAction() {
+        return actionState.action;
+    }
 }
 
-enum act {
-    shift, reduce, accept
-}
+
