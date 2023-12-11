@@ -1,9 +1,8 @@
+package parser;
+
 import Log.Log;
 import codeGenerator.CodeGenerator;
 import errorHandler.ErrorHandler;
-import parser.Action;
-import parser.Parser;
-import parser.Rule;
 import scanner.lexicalAnalyzer;
 import scanner.token.Token;
 
@@ -12,6 +11,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class ParserController {
+    private InsideParserController insideParserController;
     private Parser parser;
     private lexicalAnalyzer lexicalAnalyzer;
     private CodeGenerator cg;
@@ -22,6 +22,7 @@ public class ParserController {
         scanner = new Scanner(new File(address));
         lexicalAnalyzer = new lexicalAnalyzer(scanner);
         cg = new CodeGenerator();
+        insideParserController = new InsideParserController(parser);
     }
     public void StartParse(){
         Token lookAhead = lexicalAnalyzer.getNextToken();
@@ -29,7 +30,7 @@ public class ParserController {
         Action currentAction;
         while (!finish) {
             try {
-                currentAction = parser.getCurrentAction(lookAhead);
+                currentAction = insideParserController.getCurrentAction(lookAhead);
                 Log.print(currentAction.toString());
 
                 switch (currentAction.getAction()) {
@@ -54,8 +55,8 @@ public class ParserController {
     }
 
     public void HandleReduce(Token lookAhead, Action currentAction) {
-        Rule rule = parser.getRule(currentAction);
-        parser.UpdateParsStack(rule);
+        Rule rule = insideParserController.getRule(currentAction);
+        insideParserController.UpdateParsStack(rule);
 
         try {
             cg.semanticFunction(rule.semanticAction, lookAhead);
@@ -66,7 +67,7 @@ public class ParserController {
 
     public Token HandleShiftState(Action currentAction) {
         Token lookAhead;
-        parser.PushParsStack(currentAction);
+        parser.PushParsStack(currentAction.number);
         lookAhead = lexicalAnalyzer.getNextToken();
         return lookAhead;
     }
