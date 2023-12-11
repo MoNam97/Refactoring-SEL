@@ -17,18 +17,14 @@ public class SymbolTable {
     private SymbolType lastType;
 
     public SymbolTable(Memory memory) {
-        setMemory(memory);
+        mem = memory;
         klasses = new HashMap<>();
         keyWords = new HashMap<>();
         keyWords.put("true", new Address(1, varType.Bool, TypeAddress.Imidiate));
         keyWords.put("false", new Address(0, varType.Bool, TypeAddress.Imidiate));
     }
 
-
-    void setMemory(Memory memory) {
-        this.mem = memory;
-    }
-    Memory getMemory(){
+    Memory getMemory() {
         return this.mem;
     }
 
