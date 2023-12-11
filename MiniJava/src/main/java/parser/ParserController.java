@@ -51,7 +51,7 @@ public class ParserController {
                 ignored.printStackTrace();
             }
         }
-        if (!ErrorHandler.hasError) cg.printMemory();
+        if (!ErrorHandler.getHasError()) cg.printMemory();
     }
 
     public void HandleReduce(Token lookAhead, Action currentAction) {
