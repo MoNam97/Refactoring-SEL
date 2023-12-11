@@ -35,14 +35,26 @@
 
 در کلاس SymbolTable از متد getter برای دسترسی به متغیر private mem استفاده کردیم.
 
+![selfencapsulate1](./images/self_encapsulation1.PNG)
+
+![selfencapsulate2](./images/self_encapsulation2.PNG)
+
+![selfencapsulate3](./images/self_encapsulation3.PNG)
+
 #### بازآرایی encaplulate field
 
 متغیر عمومی hasError را در کلاس ErrorHandler به private تغییر دادیم و getter و setter آن را پیاده سازی کردیم.
+
+![encapsulate1](./images/encapulate1.PNG)
+
+![encapsulate2](./images/encapulate2.PNG)
 
 #### بازآرایی utility class
 
 با توحه به اینکه همه ی متدها و ویژگی های کلاسstatic ،ErrorHandler  هستند، این کلاس را به صورت یک کلاس utility پیاده سازی کردیم
 تا به این صورت امکان ایجاد نمونه از این کلاس وجود نداشته باشد.
+
+![util](./images/utilityclass.PNG)
 
 ## پاسخ به سوالات
 
