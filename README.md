@@ -13,6 +13,7 @@
 <div dir='rtl' align='right'>
 
 ## گزارش پروژه
+
 #### بازآرایی state
 
 در اینجا با ایجاد کلاس State و ارث بری shift, accept و reduce، بجای switch case موجود در toString() کلاس Action از actionState.GetString(number) استفاده می کنیم. همچنین در State نیز act مورد نظر را نگهداری میکنیم. به اینصورت به ازای هر یک از State های مورد نظر شامل accept, shift, reduce تابع GetString() مختص به خودشان را اجرا میکنند و به اینصورت این بازآرایی صورت گرفته است.
@@ -28,6 +29,20 @@
 #### بازآرایی Facade 2
 
 در گام بعدی، InsideParserController را پیاده سازی کردیم. در حقیقت این کلاس یک کلاس محدودتری است که رابطه میان اجزای کلاس parser را کنترل و مدیریت میکند به صورتیکه تنها stack و عملیات های حول آن در کلاس parser پیاده سازی می شود. این کلاس شامل parserTable و Rule ها می باشد.
+
+
+####  بازآرایی self encapsulate field
+
+در کلاس SymbolTable از متد getter برای دسترسی به متغیر private mem استفاده کردیم.
+
+#### بازآرایی encaplulate field
+
+متغیر عمومی hasError را در کلاس ErrorHandler به private تغییر دادیم و getter و setter آن را پیاده سازی کردیم.
+
+#### بازآرایی utility class
+
+با توحه به اینکه همه ی متدها و ویژگی های کلاسstatic ،ErrorHandler  هستند، این کلاس را به صورت یک کلاس utility پیاده سازی کردیم
+تا به این صورت امکان ایجاد نمونه از این کلاس وجود نداشته باشد.
 
 ## پاسخ به سوالات
 
