@@ -7,6 +7,9 @@ package errorHandler;
 public class ErrorHandler {
     private static boolean hasError = false;
 
+    private ErrorHandler() {
+    }
+
     public static void setHasError(boolean hasError) {
         ErrorHandler.hasError = hasError;
     }
